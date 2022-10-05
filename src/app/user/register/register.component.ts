@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormControl,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -7,7 +11,10 @@ import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  name = new UntypedFormControl('', [Validators.required, Validators.minLength(3)]);
+  name = new UntypedFormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
   email = new UntypedFormControl('', [Validators.required, Validators.email]);
   age = new UntypedFormControl('', [
     Validators.required,
@@ -27,6 +34,9 @@ export class RegisterComponent {
     Validators.minLength(13),
     Validators.maxLength(13),
   ]);
+  showAlert = false;
+  alertMsg = 'Please wait! Your account is being created.';
+  alertColor = 'blue';
   registerForm = new UntypedFormGroup({
     name: this.name,
     email: this.email,
@@ -35,4 +45,10 @@ export class RegisterComponent {
     confirmedPassword: this.confirmedPassword,
     phoneNumber: this.phoneNumber,
   });
+
+  register() {
+    this.showAlert = true;
+    this.alertMsg = 'Please wait! Your account is being created.';
+    this.alertColor = 'blue';
+  }
 }
