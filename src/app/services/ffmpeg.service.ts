@@ -22,8 +22,8 @@ export class FfmpegService {
   }
 
   async getScreenshots(file: File) {
-    const data = await fetchFile(file);
     this.isRunning = true;
+    const data = await fetchFile(file);
     this.ffmpeg.FS('writeFile', file.name, data);
     const seconds = [1, 2, 3];
     const commands: string[] = [];
